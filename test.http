@@ -1,0 +1,90 @@
+###
+POST http://localhost:8080/v1/chat/completions
+Content-Type: application/json
+
+{
+    "model": "gpt-4", 
+    "messages":[{"role": "user", "content": "Do other Azure AI services support this too?"}]
+}
+
+
+###
+POST http://localhost:8080/v1/chat/completions
+Content-Type: application/json
+
+{
+    "model": "gpt-4-vision-preview",
+    "messages": [
+        {
+            "role": "user", "content": [
+            {"type":"text", "text": "What is in the image?"},
+            {
+                "type": "image_url",
+                "image_url": {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+                }
+            }
+            ],
+        "temperature": 0.9
+        }
+    ]
+}
+
+
+###
+POST http://localhost:8080/v1/chat/completions
+Content-Type: application/json
+
+{
+  "model": "gpt-4",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the weather like in Stuttgart?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "get_current_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g. San Francisco, CA"
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["celsius", "fahrenheit"]
+            }
+          },
+          "required": ["location"]
+        }
+      }
+    }
+  ],
+  "tool_choice": "auto"
+}
+
+###
+POST http://localhost:8080/v1/images/generations
+Content-Type: application/json
+
+{
+    "prompt": "A cute baby sea otter",
+    "size": "256x256"
+}
+
+###
+POST http://localhost:8080/embeddings
+Content-Type: application/json
+
+{
+    "input": "Stuttgart ist die Hauptstadt des südwestdeutschen Bundeslands Baden-Württemberg und ein bekannter Produktionsstandort. Sowohl Mercedes-Benz als auch Porsche haben hier ihren Hauptsitz und betreiben eigene Museen. Stuttgart verfügt über zahlreiche Parks, die sich als grüner Gürtel durch die Innenstadt ziehen. Beliebt sind unter anderem der Schlossgarten, der Rosensteinpark und der Park am Killesberg.",
+    "model": "text-embedding-ada-002"
+}
+
+
