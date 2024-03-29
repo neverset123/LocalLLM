@@ -1,15 +1,20 @@
+@base_url = http://localhost:8080
+
 ###
-POST http://localhost:8080/v1/chat/completions
+# @name chatCompletions
+POST {{base_url}}/v1/chat/completions
 Content-Type: application/json
 
 {
     "model": "gpt-4", 
-    "messages":[{"role": "user", "content": "Do other Azure AI services support this too?"}]
+    "messages":[
+      {"role": "user", "content": "can you make a free weather api call without api key and registration in bash?"}
+      ]
 }
 
 
 ###
-POST http://localhost:8080/v1/chat/completions
+POST {{base_url}}/v1/chat/completions
 Content-Type: application/json
 
 {
@@ -32,7 +37,7 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:8080/v1/chat/completions
+POST {{base_url}}/v1/chat/completions
 Content-Type: application/json
 
 {
@@ -70,7 +75,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/v1/images/generations
+POST {{base_url}}/v1/images/generations
 Content-Type: application/json
 
 {
@@ -79,7 +84,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/embeddings
+POST {{base_url}}/embeddings
 Content-Type: application/json
 
 {

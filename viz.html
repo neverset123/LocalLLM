@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Pretty Print</h2>
+
+<pre id="output"></pre>
+
+<script>
+var str = "Yes, you can make a free weather API call without an API key and registration in Bash using the OpenWeatherMap's Current Weather Data API. This API allows you to retrieve weather data for a city without requiring an API key for up to five requests per minute.\n\nHere's an example of how to use the API in Bash:\n\n```bash\ncurl \"http://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}\u0026appid=${API_KEY}\"\n```\n\nIn the command above, replace `CITY_NAME` with the name of the city you want to retrieve weather data for, and remove the `${API_KEY}` placeholder since you don't need an API key for this request.\n\nNote that the API call returns data in JSON format. You may need to parse the JSON response to extract the desired information, such as the temperature or weather condition. You can use tools like `jq` for that:\n\n```bash\ncurl \"http://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}\u0026appid=${API_KEY}\" | jq '.main.temp'\n```\n\nIn the command above, `.main.temp` is a JSON path expression that selects the temperature data from the response. Adjust the JSON path to retrieve other information as needed.\n\nRemember that this API is limited to five requests per minute without an API key. If you need to make more requests, you should consider registering for a free API key or exploring alternative weather APIs.";
+document.getElementById('output').textContent = str;
+</script>
+
+</body>
+</html>
